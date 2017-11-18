@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <iomanip>
 
 using namespace std;
 
@@ -19,9 +20,10 @@ int main()
         for(int i=0; i<length; i++)
             for(int j=0; j<width; j++)
                 cin>>matrix[i][j];
+        cout<<"Original matrix:"<<endl;
         for(int i=0; i<length; i++){
             for(int j=0; j<width; j++){
-                cout<<matrix[i][j]<<"\t";
+                cout<<setw(10)<<left<<matrix[i][j];
             }
             cout<<endl;
         }
@@ -62,7 +64,7 @@ int main()
         }
         cout<<"Maximum Submatrix:"<<endl;
         for(int i=front_y; i<end_y; i++){
-            for(int j=front_x; j<end_x; j++) cout<<matrix[i][j]<<"\t";
+            for(int j=front_x; j<end_x; j++) cout<<setw(10)<<left<<matrix[i][j];
             cout<<endl;
         }
     }
