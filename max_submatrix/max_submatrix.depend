@@ -1,4 +1,9 @@
 # depslib dependency file v1.0
-1510802907 source:d:\c++\max_sub_matrix\max_submatrix\main.cpp
+1511001750 source:d:\c++\max_sub_matrix\max_submatrix\main.cpp
 	<iostream>
+	<vector>
+	<iomanip>
+	<cstdlib>
+	<ctime>
+	<cmath>
 
