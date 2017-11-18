@@ -11,20 +11,12 @@ int main()
         cin>>length;
         vector<vector<int> > matrix(length, vector<int>(width, 0));
         vector<int> one_dimension(length, 0);
-        /*for(int i=0; i<length; i++){
-            for(int j=0; j<width; j++){
-                cout<<matrix[i][j]<<"\t";
-            }
-            cout<<endl;
-        }*/
         for(int i=0; i<length; i++)
             for(int j=0; j<width; j++)
                 cin>>matrix[i][j];
         cout<<"Original matrix:"<<endl;
         for(int i=0; i<length; i++){
-            for(int j=0; j<width; j++){
-                cout<<setw(10)<<left<<matrix[i][j];
-            }
+            for(int j=0; j<width; j++) cout<<setw(10)<<left<<matrix[i][j];
             cout<<endl;
         }
         overall_max=-10000000;
@@ -33,23 +25,19 @@ int main()
                 for(int k=0; k<length; k++) one_dimension[k]=0;
                 for(int k=0; k<length; k++){
                     for(int l=j; l<i; l++) one_dimension[k]+=matrix[k][l];
-                    //cout<<one_dimension[k];
-                }//checked
+                }
                 local_max=one_dimension[0];
                 tmp_front_y=0;
                 tmp_end_y=1;
-                //cout<<local_max<<" "<<tmp_front_y<<" "<<tmp_end_y<<endl;
                 for(int k=1; k<length; k++){
                     if(local_max+one_dimension[k]>one_dimension[k]){
                         local_max+=one_dimension[k];
                         tmp_end_y++;
-                        //cout<<local_max<<" "<<tmp_front_y<<" "<<tmp_end_y<<endl;
                     }
                     else{
                         local_max=one_dimension[k];
                         tmp_front_y=k;
                         tmp_end_y=k+1;
-                        //cout<<local_max<<" "<<tmp_front_y<<" "<<tmp_end_y<<endl;
                     }
                     if(overall_max<local_max){
                         overall_max=local_max;
@@ -59,7 +47,6 @@ int main()
                         end_y=tmp_end_y;
                     }
                 }
-                //for(int i=0; i<length; i++) cout<<one_dimension[i]<<"\n";
             }
         }
         cout<<"Maximum Submatrix:"<<endl;
