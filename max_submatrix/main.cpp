@@ -9,7 +9,8 @@ using namespace std;
 
 int main()
 {
-    int width=0, length=0, front_x, end_x, front_y, end_y, tmp_front_y, tmp_end_y, overall_max, local_max;
+    int width=0, length=0, front_x, end_x, front_y, end_y, tmp_front_y, tmp_end_y;
+    long long int overall_max, local_max;
     char raw_input[11];
     cout<<"Input \'Q\' to quit"<<endl<<"Or type the width of the matrix"<<endl;
     while(cin>>raw_input&&(raw_input[0]!='q'&&raw_input[0]!='Q')){
@@ -50,17 +51,17 @@ int main()
             for(int j=0; j<width; j++) cout<<setw(10)<<left<<matrix[i][j];
             cout<<endl;
         }
-        overall_max=-10000000;
+        overall_max=-2147483647;
         for(int i=1; i<=width; i++){
             for(int j=0; j<i; j++){
                 for(int k=0; k<length; k++) one_dimension[k]=0;
                 for(int k=0; k<length; k++){
                     for(int l=j; l<i; l++) one_dimension[k]+=matrix[k][l];
                 }
-                local_max=one_dimension[0];
+                local_max=-2147483647;
                 tmp_front_y=0;
                 tmp_end_y=1;
-                for(int k=1; k<length; k++){
+                for(int k=0; k<length; k++){
                     if(local_max+one_dimension[k]>one_dimension[k]){
                         local_max+=one_dimension[k];
                         tmp_end_y++;
@@ -80,6 +81,7 @@ int main()
                 }
             }
         }
+        cout<<"Maximum Submatrix Sum:"<<endl<<overall_max<<endl;
         cout<<"Maximum Submatrix:"<<endl;
         for(int i=front_y; i<end_y; i++){
             for(int j=front_x; j<end_x; j++) cout<<setw(10)<<left<<matrix[i][j];
